@@ -12,7 +12,7 @@ class CustomUser(AbstractUser):
 
 class Payment(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    date_payment = models.DateField()
+    date = models.DateField()
     course = models.ForeignKey('materials.Course', related_name='course_payments', on_delete=models.CASCADE,
                                null=True, blank=True)
     lesson = models.ForeignKey('materials.Lesson', related_name='lesson_payments', on_delete=models.CASCADE,
