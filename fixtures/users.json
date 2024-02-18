@@ -1,0 +1,24 @@
+[
+  {
+    "model": "members.CustomUser",
+    "pk": 1,
+    "fields": {
+      "username": "user1",
+      "email": "user1@example.com",
+      "phone": "123456789",
+      "city": "City1",
+      "avatar": null
+    }
+  },
+  {
+    "model": "members.CustomUser",
+    "pk": 2,
+    "fields": {
+      "username": "user2",
+      "email": "user2@example.com",
+      "phone": "987654321",
+      "city": "City2",
+      "avatar": null
+    }
+  }
+]
