@@ -1,7 +1,6 @@
 from django.db import models
-
-
 from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 
 
 class CustomUser(AbstractUser):
@@ -23,3 +22,16 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.date} - {self.amount} - {self.payment_method}"
+
+
+class CourseSubscription(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    course = models.ForeignKey('materials.Course', on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ['user', 'course']
+        verbose_name = _('Course Subscription')
+        verbose_name_plural = _('Course Subscriptions')
+
+    def __str__(self):
+        return f"{self.user.username} subscribed to {self.course.title}"

@@ -1,4 +1,5 @@
 from django.contrib.auth.hashers import make_password
+from materials.models import Course
 from rest_framework import serializers
 from .models import Payment, CustomUser
 
@@ -35,3 +36,7 @@ class UserSerializer(serializers.ModelSerializer):
 
         user = super().update(instance, validated_data)
         return user
+
+
+class CourseSubscriptionSerializer(serializers.Serializer):
+    course_id = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all())

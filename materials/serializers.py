@@ -1,3 +1,4 @@
+from members.models import CourseSubscription
 from rest_framework import serializers
 from .models import Course, Lesson
 from .validators import validate_allowed_domains
@@ -14,14 +15,19 @@ class LessonSerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
-    # Создаем поле 'lessons_count', которое будет выводить количество уроков для каждого курса
     lessons_count = serializers.SerializerMethodField()
     lessons = LessonSerializer(many=True, read_only=True, source='lesson_set')
+    subscribed = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
-        fields = '__all__'
+        fields = ['id', 'title', 'preview', 'description', 'lessons', 'lessons_count', 'subscribed']
 
     def get_lessons_count(self, obj):
-        # Получаем количество уроков для данного курса
         return obj.lesson_set.count()
+
+    def get_subscribed(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            return CourseSubscription.objects.filter(user=user, course=obj).exists()
+        return False

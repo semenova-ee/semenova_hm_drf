@@ -16,18 +16,18 @@ class Migration(migrations.Migration):
             name='Course',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, unique=True)),
+                ('title', models.CharField(max_length=100)),
+                ('preview', models.ImageField(blank=True, upload_to='previews/')),
                 ('description', models.TextField()),
-                ('preview', models.ImageField(blank=True, null=True, upload_to='previews/')),
             ],
         ),
         migrations.CreateModel(
             name='Lesson',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, unique=True)),
+                ('title', models.CharField(max_length=100)),
                 ('description', models.TextField()),
-                ('preview', models.ImageField(blank=True, null=True, upload_to='previews/')),
+                ('preview', models.ImageField(blank=True, upload_to='previews/')),
                 ('video_link', models.URLField()),
                 ('course', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='materials.course')),
             ],
