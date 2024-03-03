@@ -1,11 +1,16 @@
 from rest_framework import serializers
 from .models import Course, Lesson
+from .validators import validate_allowed_domains
 
 
 class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson
         fields = '__all__'
+        extra_kwargs = {
+            'video_link': {'validators': [validate_allowed_domains]},
+        }
+
 
 
 class CourseSerializer(serializers.ModelSerializer):
