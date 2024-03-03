@@ -3,6 +3,7 @@ from django.db import models
 
 from django.contrib.auth.models import AbstractUser
 
+
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
@@ -22,5 +23,3 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.date} - {self.amount} - {self.payment_method}"
-
-

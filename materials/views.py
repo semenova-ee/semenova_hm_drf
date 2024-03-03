@@ -16,7 +16,6 @@ class CourseViewSet(PermissionPolicyMixin, viewsets.ModelViewSet):
         "destroy": [IsOwner & IsAuthenticated]
     }
 
-
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
@@ -24,6 +23,7 @@ class CourseViewSet(PermissionPolicyMixin, viewsets.ModelViewSet):
 class LessonListAPIView(generics.ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+
 
 class LessonCreateAPIView(generics.CreateAPIView):
     queryset = Lesson.objects.all()
@@ -33,14 +33,17 @@ class LessonCreateAPIView(generics.CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+
 class LessonRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+
 
 class LessonUpdateAPIView(generics.UpdateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = [IsOwner | IsModerator]
+
 
 class LessonDestroyAPIView(generics.DestroyAPIView):
     queryset = Lesson.objects.all()

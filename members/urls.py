@@ -6,4 +6,3 @@ urlpatterns = [
     path('users/', UserListCreateAPIView.as_view(), name='users-list'),
     path('users/<int:pk>/', UserRetrieveUpdateDestroyAPIView.as_view(), name='users-list'),
 ]
-

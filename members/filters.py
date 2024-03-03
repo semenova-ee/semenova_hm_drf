@@ -1,6 +1,7 @@
 from .models import Payment
 from django_filters import rest_framework as filters
 
+
 class PaymentFilter(filters.FilterSet):
     course = filters.CharFilter(field_name='course__title', lookup_expr='icontains')
     lesson = filters.CharFilter(field_name='lesson__title', lookup_expr='icontains')

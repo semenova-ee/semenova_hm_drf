@@ -9,6 +9,7 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
+
 class Lesson(models.Model):
     title = models.CharField(unique=True, max_length=100)
     description = models.TextField()
@@ -18,4 +19,3 @@ class Lesson(models.Model):
 
     def __str__(self):
         return self.title
-
