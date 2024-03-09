@@ -1,73 +1,42 @@
 [
     {
-        "model": "auth.group",
-        "pk": 1,
-        "fields": {
-            "name": "moderators"
-        }
-    },
-    {
         "model": "members.CustomUser",
         "pk": 1,
         "fields": {
+            "password": "pbkdf2_sha256$600000$bq4fmLJ9M154ABureV6iNP$Fd+/vwYoUmmTqVzGC+EOo0wz9xnkR5b/I4G6oJsCsWw=",
+            "last_login": "2024-02-24T09:22:25.351729Z",
+            "is_superuser": false,
             "username": "user1",
-            "email": "user1@example.com",
-            "phone": "1234567890",
-            "city": "City1",
+            "first_name": "John",
+            "last_name": "Doe",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-24T07:28:28.800747Z",
+            "email": "user1@mail.ru",
+            "phone": "1231231312",
+            "city": "London",
             "avatar": null,
-            "password": "pbkdf2_sha256$150000$TTl7P4Z1L4G4$2E9T8UCV5iL2lCmeANxVfO9Tbqy1P5VL0Lxi+qkSGrI="
+            "user_permissions": []
         }
     },
     {
         "model": "members.CustomUser",
         "pk": 2,
         "fields": {
+            "password": "pbkdf2_sha256$600000$bq4fmLJ9M154ABureV6iNP$Fd+/vwYoUmmTqVzGC+EOo0wz9xnkR5b/I4G6oJsCsWw=",
+            "last_login": "2024-02-25T09:22:25.351729Z",
+            "is_superuser": false,
             "username": "user2",
-            "email": "user2@example.com",
-            "phone": "9876543210",
-            "city": "City2",
+            "first_name": "Jane",
+            "last_name": "Smith",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-02-25T07:28:28.800747Z",
+            "email": "user2@mail.ru",
+            "phone": "4564564646",
+            "city": "New York",
             "avatar": null,
-            "password": "pbkdf2_sha256$150000$TTl7P4Z1L4G4$2E9T8UCV5iL2lCmeANxVfO9Tbqy1P5VL0Lxi+qkSGrI="
-        }
-    },
-    {
-        "model": "members.CustomUser",
-        "pk": 3,
-        "fields": {
-            "username": "moderator1",
-            "email": "moderator1@example.com",
-            "phone": "5555555555",
-            "city": "ModeratorCity1",
-            "avatar": null,
-            "password": "pbkdf2_sha256$150000$TTl7P4Z1L4G4$2E9T8UCV5iL2lCmeANxVfO9Tbqy1P5VL0Lxi+qkSGrI="
-        }
-    },
-    {
-        "model": "members.CustomUser",
-        "pk": 4,
-        "fields": {
-            "username": "moderator2",
-            "email": "moderator2@example.com",
-            "phone": "6666666666",
-            "city": "ModeratorCity2",
-            "avatar": null,
-            "password": "pbkdf2_sha256$150000$TTl7P4Z1L4G4$2E9T8UCV5iL2lCmeANxVfO9Tbqy1P5VL0Lxi+qkSGrI="
-        }
-    },
-    {
-        "model": "auth.user_groups",
-        "pk": 1,
-        "fields": {
-            "user": 3,
-            "group": 1
-        }
-    },
-    {
-        "model": "auth.user_groups",
-        "pk": 2,
-        "fields": {
-            "user": 4,
-            "group": 1
+            "user_permissions": []
         }
     }
 ]
