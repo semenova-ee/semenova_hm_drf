@@ -14,6 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = "__all__"
+        ref_name = 'CustomUserSerializer'
 
     def create(self, validated_data):
         password = validated_data.get('password')
