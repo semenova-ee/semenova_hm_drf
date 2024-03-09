@@ -1,5 +1,6 @@
 from rest_framework import generics, viewsets
 from .models import Course, Lesson
+from .paginators import CustomPageNumberPagination
 from .serializers import CourseSerializer, LessonSerializer
 from members.permissions import IsModerator, IsOwner, IsAuthenticated, PermissionPolicyMixin
 
@@ -16,6 +17,8 @@ class CourseViewSet(PermissionPolicyMixin, viewsets.ModelViewSet):
         "destroy": [IsOwner & IsAuthenticated]
     }
 
+    pagination_class = CustomPageNumberPagination
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
@@ -23,6 +26,7 @@ class CourseViewSet(PermissionPolicyMixin, viewsets.ModelViewSet):
 class LessonListAPIView(generics.ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+    pagination_class = CustomPageNumberPagination
 
 
 class LessonCreateAPIView(generics.CreateAPIView):
