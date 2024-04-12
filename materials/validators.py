@@ -9,6 +9,6 @@ def validate_allowed_domains(value):
     for domain in ALLOWED_DOMAINS:
         if value != domain:
             raise ValidationError(
-                _(f'Links to {domain} are not allowed.'),
+                _(f'Links to {value} are not allowed.'),
                 params={'value': value},
             )
