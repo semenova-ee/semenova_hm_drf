@@ -3,6 +3,9 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 
 
+NULLABLE = {'blank': True, 'null': True}
+
+
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
@@ -19,6 +22,9 @@ class Payment(models.Model):
                                null=True, blank=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     payment_method = models.CharField(max_length=20, choices=[('cash', 'Наличные'), ('transfer', 'Перевод')])
+    stripe_link = models.URLField(max_length=400, **NULLABLE)
+    stripe_id = models.CharField(max_length=255, **NULLABLE)
+
 
     def __str__(self):
         return f"{self.user} - {self.date} - {self.amount} - {self.payment_method}"
