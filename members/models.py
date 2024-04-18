@@ -25,7 +25,6 @@ class Payment(models.Model):
     stripe_link = models.URLField(max_length=400, **NULLABLE)
     stripe_id = models.CharField(max_length=255, **NULLABLE)
 
-
     def __str__(self):
         return f"{self.user} - {self.date} - {self.amount} - {self.payment_method}"
 

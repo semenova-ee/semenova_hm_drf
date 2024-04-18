@@ -8,7 +8,6 @@ class Migration(migrations.Migration):
     dependencies = [
         ('members', '0004_coursesubscription'),
     ]
-
     operations = [
         migrations.AddField(
             model_name='payment',
