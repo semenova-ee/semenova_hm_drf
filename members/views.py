@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Payment, CustomUser, CourseSubscription
 from .serializers import PaymentSerializer, UserSerializer, CourseSubscriptionSerializer
-from .filters import PaymentFilter
+from materials.filters import PaymentFilter
 
 
 class PaymentListView(generics.ListAPIView):
