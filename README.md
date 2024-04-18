@@ -11,7 +11,7 @@ https://github.com/semenova-ee/semenova_hm_drf
 
 - Установить зависимости 
 
-`pip install -r requirements.txt`
+`pip install -r reqs.txt`
 
 - Подготовить миграции 
 
