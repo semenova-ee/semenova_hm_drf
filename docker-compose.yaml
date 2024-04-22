@@ -54,7 +54,7 @@ services:
     env_file:
       - .env
     tty: true
-    command: celery -A config beat -l INFO -S django
+    command: celery -A education_course beat -l INFO -S django
     depends_on:
       - redis
       - db
