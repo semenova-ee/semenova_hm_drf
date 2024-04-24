@@ -2,16 +2,18 @@ version: "3"
 
 services:
   db:
-    image: postgres:16
-    restart: always
+    image: postgres:16-alpine
+#    restart: always
     env_file:
       - .env
     expose:
       - '5432'
     volumes:
-      - pg_data:/var/lib/postgresql/data/
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      - PGDATA=/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready" ]
+      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER" ]
       interval: 5s
       timeout: 15s
       retries: 5
@@ -26,8 +28,6 @@ services:
       - .:/app
     depends_on:
       - db
-      #db: (к тесту проверки здоровья БД)
-      #condition: service_healthy
 
   # REDIS
   redis:
@@ -41,23 +41,21 @@ services:
     tty: true
     env_file:
       - .env
-    command: celery -A config worker -l INFO
+    command: celery -A education_course worker -l INFO
     depends_on:
       - redis
-      - db
       - app
 
   # CELERY-BEAT
   celery_beat:
     build: .
-    restart: always
+#    restart: always
     env_file:
       - .env
     tty: true
     command: celery -A education_course beat -l INFO -S django
     depends_on:
       - redis
-      - db
       - app
 
 
